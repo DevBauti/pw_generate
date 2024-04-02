@@ -1,7 +1,7 @@
 import random, string
 
 MIN_LENGTH = 8
-MAX_LENGTH = 30
+MAX_LENGTH = 40
 
 class PasswordGenerator:
     @staticmethod
@@ -14,8 +14,9 @@ class CharacterSet:
         return string.ascii_letters + string.punctuation + string.digits
     
 class PasswordGeneratorSevice:
+    
     @staticmethod
-    def generate(include_upper=False, include_lower=True, include_digits=True, include_symbols=False):
+    def generate(length:int=MIN_LENGTH,include_upper:bool=False, include_lower:bool=False, include_digits:bool=False, include_symbols:bool=False):
         characters = ''
         if include_upper:
             characters += string.ascii_uppercase
@@ -25,27 +26,23 @@ class PasswordGeneratorSevice:
             characters += string.digits
         if include_symbols:
             characters += string.punctuation
-        return characters
+        return PasswordGenerator.generate(length,characters)
 
     @classmethod
-    def generate_password(cls):
-        return PasswordGenerator.generate(MIN_LENGTH, cls.generate())
-    
-    @classmethod
-    def generate_random_length_password(cls):
-        return PasswordGenerator.generate(random.randint(MIN_LENGTH, MAX_LENGTH),cls.generate())
+    def generate_random_length_password(cls,upp:bool,low:bool,dig:bool,sym:bool):
+        return cls.generate(length=random.randint(MIN_LENGTH, MAX_LENGTH),include_upper=upp,include_lower=low,include_digits=dig,include_symbols=sym)
 
     @staticmethod
     def generate_random_length_password_with_all_characters():
         return PasswordGenerator.generate(random.randint(MIN_LENGTH, MAX_LENGTH),CharacterSet.all())
     
 
-"""
-a = PasswordGeneratorSevice.generate_password()
-b = PasswordGeneratorSevice.generate_random_length_password()
+a = PasswordGeneratorSevice.generate(8,True,False,False,True)
+b = PasswordGeneratorSevice.generate_random_length_password(False, True, True, False)
 c = PasswordGeneratorSevice.generate_random_length_password_with_all_characters()
-
 print(f'{a}\n{b}\n{c}')
+"""
+
 
 tsmi6i2s
 grtopz7toq5
