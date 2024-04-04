@@ -37,12 +37,12 @@ class PasswordGeneratorSevice:
         return PasswordGenerator.generate(random.randint(MIN_LENGTH, MAX_LENGTH),CharacterSet.all())
     
 
+"""
+
 a = PasswordGeneratorSevice.generate(8,True,False,False,True)
 b = PasswordGeneratorSevice.generate_random_length_password(False, True, True, False)
 c = PasswordGeneratorSevice.generate_random_length_password_with_all_characters()
 print(f'{a}\n{b}\n{c}')
-"""
-
 
 tsmi6i2s
 grtopz7toq5
